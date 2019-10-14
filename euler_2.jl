@@ -3,4 +3,24 @@
 
 # 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ...
 
-# By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms.
+# By considering the terms in the Fibonacci sequence whose values do not exceed
+# four million, find the sum of the even-valued terms.
+
+is_even(x) = ((x % 2) == 0)
+sum = 0
+fibonacci(n) = n < 2 ? n : fibonacci(n-1) + fibonacci(n-2)
+i = 2
+current = fibonacci(i)
+
+while current < 4e6
+
+    println(current)
+    global current, i, sum
+    sum += is_even(current) ? current : 0
+
+    i += 1
+    current = fibonacci(i)
+end
+println()
+println(sum)
+println()
