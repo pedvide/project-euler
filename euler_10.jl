@@ -20,3 +20,15 @@ res = @distributed (+) for i = 2:max_num
         0
     end
 end
+
+# sieve of erathostenes
+# soooo much faster
+max_num =  Int(2e6)
+prime_candidates = trues(max_num)
+for i in 2:max_num
+    if prime_candidates[i]
+        prime_candidates[i^2:i:max_num] .= false
+    end
+end
+
+sum(findall(prime_candidates))-1
